@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
 function GoogleAuthRedirect() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -13,7 +12,7 @@ function GoogleAuthRedirect() {
       localStorage.setItem("token", token);
        if(username){
       localStorage.setItem("username", username);
-      navigate("/home");
+      navigate("/");
     }else{
       console.error("No username found in URL");
       navigate("/login");

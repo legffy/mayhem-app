@@ -4,13 +4,12 @@ import PromptForm  from "./components/PromptForm";
 import ChallengeFeed from "./components/ChallengeFeed";
 import UserSuggestions from "./components/UserSuggestions";
 function HomePage(){
-    return <div className="flex bg-[#F2F4F3]">
-        <SideBar/>
-        <div className="flex flex-col w-4/6">
+    return <div className="">
+        <div className="flex flex-col">
             <PromptForm/>
             <ChallengeFeed/>
         </div>
-        <UserSuggestions/>
+
     </div>
 }
 export default HomePage

@@ -38,9 +38,9 @@ function SignUpForm() {
         alert(data.error || "Signup failed");
         return;
       }
-      localStorage.setItem("username", data.user.username); // if backend returns it
+      localStorage.setItem("username", data.user.username);
       localStorage.setItem("token", data.token);
-      navigate("/home");
+      navigate("/");
     } catch (err) {
       console.error("Login error:", err);
       setLoading(false);

@@ -4,7 +4,6 @@ import db from "../db.js";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
-
 passport.use(
   new GoogleStrategy(
     {
@@ -22,9 +21,10 @@ passport.use(
 
         let user;
         if (result.rows.length === 0) {
+          const username = profile.displayName || `user_${Date.now()}`;
           const insert = await db.query(
-            "INSERT INTO users (email,password_hash) VALUES ($1, $2) RETURNING id, email",
-            [email, "GOOGLE"]
+            "INSERT INTO users (email,password_hash,username) VALUES ($1, $2,$3) RETURNING id, email",
+            [email, "GOOGLE",username]
           );
           user = insert.rows[0];
         } else {

@@ -37,7 +37,7 @@ function LoginForm() {
       }
       localStorage.setItem("token", data.token);
       localStorage.setItem("username", data.user.username);
-      navigate("/home");
+      navigate("/");
       setLoading(false);
     } catch (err) {
       setLoading(false)

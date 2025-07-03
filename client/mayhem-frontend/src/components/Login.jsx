@@ -18,7 +18,7 @@ function Login(props) {
       style={{ width: `${props.bWidth}px` }}
     >
       <span className="relative z-10">Login</span>
-      <span class="absolute inset-0 bg-white opacity-10 rounded-full blur-xl z-0"></span>
+      <span className="absolute inset-0 bg-white opacity-10 rounded-full blur-xl z-0"></span>
     </Link>
   );
 }
