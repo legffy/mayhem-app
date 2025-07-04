@@ -14,14 +14,14 @@ const getAllChallenges = async (req, res) => {
   }
 };
 const getUserChallenges = async (req, res) => {
-    const  {id} = req.body;
-    if(!id){
+    const user_id = Number(req.params.user_id);
+    if(!user_id){
         return res.status(400).json({error: "user id is required"});
     }
     try{
-        const result = await db.query("SELECT * FROM challenges where user_id = ($1)",[id]);
-        const userChallenges = result.rows;
-        res.json(userChallenge);
+        const result = await db.query("SELECT * FROM challenges where user_id = ($1)",[user_id]);
+        const userChallenges = result.rows[0];
+        res.json(userChallenges);
     }catch(err){
         console.error("Error getting challenge", err);
     }
@@ -57,4 +57,4 @@ const createChallenge =  async (req, res) => {
   
 };
 
-export { getAllChallenges, createChallenge };
+export { getAllChallenges, createChallenge, getUserChallenges };

@@ -23,6 +23,6 @@ function UserSuggestions(){
   useEffect(() => {
     fetchUsers(1);
   },[]);
-    return <div className="w-1/6 border-l border-gray-300">{users.map((user, index) =>  { return <UserCard key = {index} username = {user.username}/>})}</div>
+    return <div className="w-1/6 border-l border-gray-300">{users.map((user, index) =>  { return <UserCard key = {index} username = {user.username} profile_picture = {user.profile_picture} userId = {user.id}/>})}</div>
 }
 export default UserSuggestions;

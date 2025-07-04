@@ -66,11 +66,11 @@ function ChallengeFeed() {
   }, [challenges]);
 
   return (
-    <div className="p-10 flex flex-col items-center">
-      <h2 className="m-12 text-xl">Challenges</h2>
+    <div className="p-10 flex flex-col">
+      <h2 className="m-12 text-xl text-center">Challenges</h2>
       {challenges.map((challenge, index) => {
         const isLast = index === challenges.length-1;
-       return <div key={challenge.id ?? index} ref = {isLast ? lastChallengeRef : null} className="flex m-12 flex-col">
+       return <div key={challenge.id ?? index} ref = {isLast ? lastChallengeRef : null} className="flex m-12 justify-start items-start flex-col">
           <h3>{usernames[challenge.user_id] ?? "Loading user..."}</h3>
           <p>{challenge.prompt}</p>
         </div>
