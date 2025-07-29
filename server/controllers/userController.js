@@ -41,4 +41,34 @@ const uploadProfilePic = async (req, res) => {
 
   res.json({ success: true, imageURL });
 }
-export {getAllUsers, getUser, uploadProfilePic}
+ const searchUsers = async (req, res) => {
+    try{
+    //Want to create a limit later
+  //  const limit = parseInt(req.query.limit) || 12;
+   // const offset = parseInt(req.query.offset) || 0;
+   const name = req.params.name;
+    const result = await db.query("SELECT * FROM users WHERE username ILIKE $1",[`%${name}%`]);
+    const users = result.rows;
+    res.json(users);
+    }catch(err){
+        console.error("error getting users", err);
+    }
+  }
+  const getFollowerUsers = async (req, res) => {
+  try {
+    const ids = req.body.ids;
+    if (!Array.isArray(ids) || ids.length === 0) {
+      return res.status(400).json({ error: "Invalid or empty 'ids' array" });
+    }
+
+    const placeholders = ids.map((_, i) => `$${i + 1}`).join(', ');
+    const query = `SELECT * FROM users WHERE id IN (${placeholders})`;
+    const result = await db.query(query, ids);
+
+    res.json(result.rows);
+  } catch (err) {
+    console.error("Error fetching following challenges:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+};
+export {getAllUsers, getUser, uploadProfilePic,searchUsers, getFollowerUsers}

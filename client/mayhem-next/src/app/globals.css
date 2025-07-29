@@ -1,0 +1,26 @@
+@import "tailwindcss";
+.text-glow-blue {
+  color: white;
+  text-shadow:
+    0 0 5px #0ff,
+    0 0 10px #0ff,
+    0 0 20px #0ff,
+    0 0 40px #0ff;
+}
+.crimsonGlow{
+    text-shadow: 3px 2px 5px red;
+}
+.title{
+    text-shadow: 3px 2px 5px white;
+}
+
+@keyframes hue-rotate {
+    0%   { text-shadow: 2px 2px 10px red; }
+  33%  { text-shadow: 1px 1px 10px #e83131; }
+  66%  { text-shadow: 3px 3px 10px rgb(255, 55, 55); }
+  100% { text-shadow: 2px 2px 10px rgb(183, 25, 25); }
+}
+
+.animate-hue {
+  animation: hue-rotate 5s linear infinite;
+}
